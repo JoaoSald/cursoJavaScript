@@ -1,0 +1,13 @@
+//retornando valores
+const double = function(number) {
+    return number * 2
+}
+
+ const result = double(3)
+
+const showResult = function (value){
+    return `o resultado é: ${value}`
+}
+
+
+ console.log(showResult(result))
