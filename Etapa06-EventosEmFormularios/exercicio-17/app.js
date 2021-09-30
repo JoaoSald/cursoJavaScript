@@ -91,4 +91,6 @@ console.log(NASAResult)
   Exemplos:
     - "0xY79aYx54e" é um valor válido, pois contém 11 letras e números;
     - "eich_1961" não é um valor válido, pois contém um caractere especial.
+
+    const regex = /[a-zA-Z0-9]{7,11}/ 
 */
