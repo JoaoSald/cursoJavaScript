@@ -33,6 +33,48 @@
   - Não insira o parágrafo manualmente no index.html.
 */
 
+//1
+const form = document.querySelector('form')
+const mensagem = document.querySelector('.mensagem')
+
+form.addEventListener('keyup', evento =>{
+  evento.preventDefault()
+  //console.log(evento.target.value)
+
+  const regax = /[a-zA-Z]{6,}/
+  const testRegax = regax.test(evento.target.value)
+
+  if(testRegax){
+    //Adicionando a classe css via setAttribute
+    mensagem.setAttribute('class', 'username-success-feedback')
+    mensagem.textContent = 'Username válido =)'
+  
+    return
+  }
+   //Adicionando a classe css via classList.add
+  mensagem.classList.add('username-help-feedback')
+  mensagem.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
+
+})
+
+//2
+const mensagem2 = document.querySelector('.mensagem2')
+
+form.addEventListener('submit', evento=>{
+  evento.preventDefault()
+
+  const regax = /[a-zA-Z]{6,}/
+  const testRegax = regax.test(evento.target.username.value)
+
+ if(testRegax){
+  mensagem2.classList.add('submit-success-feedback')
+  mensagem2.textContent = 'Dados enviados =)'
+  return
+ }
+ mensagem2.classList.add('submit-help-feedback')
+ mensagem2.textContent = 'Por favor, insira um username válido'
+})
+
 /*
   03
 
