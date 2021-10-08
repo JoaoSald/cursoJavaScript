@@ -37,14 +37,17 @@
 const form = document.querySelector('form')
 const mensagem = document.querySelector('.mensagem')
 
+const testeUsername = username => /^[a-zA-Z]{6,}$/.test(username)
+
 form.addEventListener('keyup', evento =>{
   evento.preventDefault()
   //console.log(evento.target.value)
 
   const regax = /[a-zA-Z]{6,}/
-  const testRegax = regax.test(evento.target.value)
+  //const testRegax = regax.test(evento.target.value)
+  const isAvaliedUsername = testeUsername(evento.target.value)
 
-  if(testRegax){
+  if(isAvaliedUsername){
     //Adicionando a classe css via setAttribute
     mensagem.setAttribute('class', 'username-success-feedback')
     mensagem.textContent = 'Username válido =)'
@@ -63,10 +66,11 @@ const mensagem2 = document.querySelector('.mensagem2')
 form.addEventListener('submit', evento=>{
   evento.preventDefault()
 
-  const regax = /[a-zA-Z]{6,}/
-  const testRegax = regax.test(evento.target.username.value)
+ // const regax = /[a-zA-Z]{6,}/
+  //const testRegax = regax.test(evento.target.username.value)
+  const isAvaliedUsername = testeUsername(evento.target.username.value)
 
- if(testRegax){
+ if(isAvaliedUsername){
   mensagem2.classList.add('submit-success-feedback')
   mensagem2.textContent = 'Dados enviados =)'
   return
