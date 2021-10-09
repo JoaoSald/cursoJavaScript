@@ -34,50 +34,45 @@
 */
 
 //1
-const form = document.querySelector('form')
-const mensagem = document.querySelector('.mensagem')
+const input = document.querySelector('#username')
+const p = document.createElement('p')
 
-const testeUsername = username => /^[a-zA-Z]{6,}$/.test(username)
+input.addEventListener('keyup', evento => {
 
-form.addEventListener('keyup', evento =>{
-  evento.preventDefault()
-  //console.log(evento.target.value)
+  const valueUsername = evento.target.value
+  const regax = /^[a-zA-Z]{6,}$/
 
-  const regax = /[a-zA-Z]{6,}/
-  //const testRegax = regax.test(evento.target.value)
-  const isAvaliedUsername = testeUsername(evento.target.value)
-
-  if(isAvaliedUsername){
-    //Adicionando a classe css via setAttribute
-    mensagem.setAttribute('class', 'username-success-feedback')
-    mensagem.textContent = 'Username válido =)'
-  
+  if(!regax.test(valueUsername)){
+    p.setAttribute('class', 'username-help-feedback')
+    p.textContent = "O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas"
+    evento.target.insertAdjacentElement('afterend', p) //insertAdjacentElement vai fazer com que o P seja criado dpois do input
+   
     return
   }
-   //Adicionando a classe css via classList.add
-  mensagem.classList.add('username-help-feedback')
-  mensagem.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
+  p.setAttribute('class', 'username-success-feedback')
+  p.textContent = "Username válido =)"
+  evento.target.insertAdjacentElement('afterend', p)
 
 })
 
 //2
-const mensagem2 = document.querySelector('.mensagem2')
+// const mensagem2 = document.querySelector('.mensagem2')
 
-form.addEventListener('submit', evento=>{
-  evento.preventDefault()
+// form.addEventListener('submit', evento=>{
+//   evento.preventDefault()
 
- // const regax = /[a-zA-Z]{6,}/
-  //const testRegax = regax.test(evento.target.username.value)
-  const isAvaliedUsername = testeUsername(evento.target.username.value)
+//  // const regax = /[a-zA-Z]{6,}/
+//   //const testRegax = regax.test(evento.target.username.value)
+//   const isAvaliedUsername = testeUsername(evento.target.username.value)
 
- if(isAvaliedUsername){
-  mensagem2.classList.add('submit-success-feedback')
-  mensagem2.textContent = 'Dados enviados =)'
-  return
- }
- mensagem2.classList.add('submit-help-feedback')
- mensagem2.textContent = 'Por favor, insira um username válido'
-})
+//  if(isAvaliedUsername){
+//   mensagem2.classList.add('submit-success-feedback')
+//   mensagem2.textContent = 'Dados enviados =)'
+//   return
+//  }
+//  mensagem2.classList.add('submit-help-feedback')
+//  mensagem2.textContent = 'Por favor, insira um username válido'
+// })
 
 /*
   03
@@ -99,3 +94,16 @@ form.addEventListener('submit', evento=>{
   Spoiler alert: este tipo de exercício será frequente em etapas mais avançadas  
   do curso, onde falaremos sobre TDD. Vá se aquecendo =D
 */
+
+const some = (array, func) =>{
+  for(let i = 0; i < array.length; i++)
+  {
+    //console.log(array[i])
+    if(func(array[i]))
+    {
+      return true
+    }
+  }
+  return false
+}
+console.log(some([1,2,3], item => item ===3 ))
