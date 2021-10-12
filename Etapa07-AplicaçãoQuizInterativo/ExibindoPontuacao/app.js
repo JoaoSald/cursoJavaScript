@@ -20,6 +20,6 @@ form.addEventListener('submit',evento =>{
             score += 25
         }
     })
-   result.querySelector('span').textContent = `${score}%` //usando o querySelector encadeado na div para buscar somente na div 
+   result.querySelector('span').textContent = `${score}%` //usando o querySelector encadeado na div para buscar a div especifica
    result.classList.remove('d-none') //remove a classe d-none e aparece na tela 
 })
