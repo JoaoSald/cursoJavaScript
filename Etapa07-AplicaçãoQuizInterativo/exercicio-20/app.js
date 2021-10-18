@@ -24,20 +24,26 @@ console.log("Um segundo e meio se passaram desde que a página foi carregada.")
 const h1 = document.querySelector('h1')
 const buttonInitCounter = document.querySelector('.button-init-counter')
 const buttonStopCounter = document.querySelector('.button-stop-counter')
+let timer = null
 
-let counter = 0
+const incrementCounter = ()=> {
+  const incrementedCounter = Number(h1.textContent) + 1
+  h1.textContent = incrementedCounter
+}
+
+const stopCounter = () =>{
+  clearInterval(timer)
+  h1.textContent = `0`
+}
 
 buttonInitCounter.addEventListener('click',()=>{
-const timer = setInterval(() => {
-  h1.textContent = `${counter}`
-  counter++
-}, 100);
+ timer = setInterval(incrementCounter, 1000)
+})
 
 buttonStopCounter.addEventListener('click', ()=>{
-  clearInterval(timer)
-   h1.textContent = `0`
+ stopCounter()
 })
-})
+
 
 /* 
   04
