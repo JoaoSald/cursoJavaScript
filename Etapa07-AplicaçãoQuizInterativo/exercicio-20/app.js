@@ -10,8 +10,9 @@
   - Após um segundo e meio do carregamento da página, exiba no console a  
     mensagem "Um segundo e meio se passaram desde que a página foi carregada".
 */
-
-
+setTimeout(()=>{
+console.log("Um segundo e meio se passaram desde que a página foi carregada.")
+},1500)
 
 /* 
   03
@@ -20,7 +21,23 @@
   - O clique no botão "Parar contador" deve fazer com que o contador exiba 0.
 */
 
+const h1 = document.querySelector('h1')
+const buttonInitCounter = document.querySelector('.button-init-counter')
+const buttonStopCounter = document.querySelector('.button-stop-counter')
 
+let counter = 0
+
+buttonInitCounter.addEventListener('click',()=>{
+const timer = setInterval(() => {
+  h1.textContent = `${counter}`
+  counter++
+}, 100);
+
+buttonStopCounter.addEventListener('click', ()=>{
+  clearInterval(timer)
+   h1.textContent = `0`
+})
+})
 
 /* 
   04
