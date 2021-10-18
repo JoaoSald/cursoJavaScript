@@ -21,11 +21,13 @@ console.log("Um segundo e meio se passaram desde que a página foi carregada.")
   - O clique no botão "Parar contador" deve fazer com que o contador exiba 0.
 */
 
+// variáveis
 const h1 = document.querySelector('h1')
 const buttonInitCounter = document.querySelector('.button-init-counter')
 const buttonStopCounter = document.querySelector('.button-stop-counter')
 let timer = null
 
+// Funções
 const incrementCounter = ()=> {
   const incrementedCounter = Number(h1.textContent) + 1
   h1.textContent = incrementedCounter
@@ -35,7 +37,9 @@ const stopCounter = () =>{
   clearInterval(timer)
   h1.textContent = `0`
 }
+// fim funções
 
+// listeners de evento
 buttonInitCounter.addEventListener('click',()=>{
  timer = setInterval(incrementCounter, 1000)
 })
@@ -43,6 +47,7 @@ buttonInitCounter.addEventListener('click',()=>{
 buttonStopCounter.addEventListener('click', ()=>{
  stopCounter()
 })
+//fim listeners de evento
 
 
 /* 
