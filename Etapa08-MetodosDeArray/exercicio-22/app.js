@@ -7,10 +7,11 @@
 */
 
 const names = ['Caio', 'André', 'Dário']
+names.sort()
+// console.log(names)
 
 /*
   02
-
   - Ordene, de forma crescente, os objetos do array abaixo baseado em seus id's;
   - Não modifique o array original;
   - Exiba o array ordenado no console.
@@ -23,44 +24,48 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
+const charactersCrescente = characters.sort((item1, item2) => item1.id - item2.id)
+//console.log(charactersCrescente)
+
 /*
   03
-
   - Ordene o array de números abaixo de forma crescente;
   - Não modifique o array original;
   - Exiba o array ordenado no console.
 */
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
+const numbersOrdenado = numbers.sort((item1, item2) => item1 - item2)
+//console.log(numbersOrdenado)
 
 /*
   04
-
   - Encontre e exiba no console o 1º item maior que 50 do array abaixo.
 */
-
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+const numberMoreThan50 = randomNumbers.filter(item => item >50)
+//console.log(numberMoreThan50)
 
 /*
   05
-
   - Ordene o array de strings abaixo em ordem alfabética-invertida (Z-A);
   - Não modifique o array original;
   - Exiba o array ordenado no console.
 */
-
 const people = ['Cauã', 'Alfredo', 'Bruno']
+const peopleInvertida = people.sort()
+//console.log(peopleInvertida.reverse())
 
 /*
   06
-  
   - Através do array abaixo, gere a mensagem "vinho cozido, tomate cozido, 
     cebola cozida, cogumelo cozido";
   - Exiba a string no console.
 */
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
-
+const ingredientsAlterados = ingredients.map(item => `${item} cozido`)
+//console.log(ingredientsAlterados)
 /*
   07
   
@@ -80,6 +85,17 @@ const topBrazilmovies = [
   { title: 'Os Vingadores', peopleAmount: 10968065, distributedBy: 'Disney' },
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
+
+const FilmesDisney = topBrazilmovies.reduce((acumulador, item) =>
+{
+    if(item.distributedBy === 'Disney')
+    {
+      acumulador++
+    }
+    return acumulador
+}, 0)
+
+//console.log(FilmesDisney)
 
 /*
   08
@@ -101,12 +117,22 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
+const ArraysDog = pets.filter(pet => pet.type === 'Dog').map(item => item.age * 7)
+//console.log(ArraysDog)
+
 /*
   09
   
   - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
+const filmes = topBrazilmovies.reduce((acumulador, item) =>{
+  return `  ${acumulador}- ${item.title} \n`
+},'')
+
+  const ul = document.querySelector('ul')
+  ul.textContent = filmes
+
 
 /*
   10
