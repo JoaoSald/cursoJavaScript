@@ -7,9 +7,8 @@
 */
 
 const names = ['Caio', 'André', 'Dário']
-names.sort()
-// console.log(names)
-
+const namesCopy = names.map(item => item).sort()
+// console.log(namesCopy)
 /*
   02
   - Ordene, de forma crescente, os objetos do array abaixo baseado em seus id's;
@@ -95,7 +94,7 @@ const FilmesDisney = topBrazilmovies.reduce((acumulador, item) =>
     return acumulador
 }, 0)
 
-//console.log(FilmesDisney)
+console.log(FilmesDisney)
 
 /*
   08
@@ -117,8 +116,9 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
-const ArraysDog = pets.filter(pet => pet.type === 'Dog').map(item => item.age * 7)
-//console.log(ArraysDog)
+const ArraysDog = pets.filter(pet => pet.type === 'Dog')
+.map(item => item.age * 7)
+console.log(ArraysDog)
 
 /*
   09
@@ -126,12 +126,9 @@ const ArraysDog = pets.filter(pet => pet.type === 'Dog').map(item => item.age * 
   - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
-const filmes = topBrazilmovies.reduce((acumulador, item) =>{
-  return `  ${acumulador}- ${item.title} \n`
-},'')
-
-  const ul = document.querySelector('ul')
-  ul.textContent = filmes
+const ul = document.querySelector('.list-group')
+const moviesNames = topBrazilmovies.map(movie => `<li>${movie.title}</li>`).join('')
+ul.innerHTML = moviesNames
 
 
 /*
