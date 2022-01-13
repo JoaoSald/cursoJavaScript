@@ -6,6 +6,7 @@
 */
 
 const myString = '    JS      '
+console.log(myString.trim())
 
 /*
   02
@@ -23,6 +24,8 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
 
+const peopleScore = people.sort((score1, score2) => score1.score - score2.score )
+console.log(peopleScore)
 /*
   03
 
@@ -34,6 +37,8 @@ const people = [
 */
 
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
+const animals3letras = animals.filter(item => item.length === 3 ) 
+console.log(animals3letras)
 
 /*
   04
@@ -41,6 +46,8 @@ const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
   - Baseado no array "animals", gere um novo array com a quantidade de letras do 
     nome de cada animal. Ex.: [6, 8, 2].
 */
+const animalNumbersLetras = animals.map(item => item.length)
+console.log(animalNumbersLetras)
 
 
 
@@ -59,7 +66,8 @@ const friends = [
   { id: 4, name: 'Nilson', nearMe: true },
   { id: 5, name: 'Solange', nearMe: false }
 ]
-
+const amigosPerto = friends.filter(item => item.nearMe).map(item => item.name)
+console.log(amigosPerto)
 
 
 /*
@@ -70,6 +78,8 @@ const friends = [
 */
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
+ const numerosImparesSoma = numbers.filter(item => item % 2 === 1).reduce((acc, item) => item +acc ,0)
+ console.log(numerosImparesSoma)
 
 /*
   07
@@ -91,3 +101,12 @@ const data = [{
   country: 'Indonesia',
   population: 263991379
 }]
+
+const somaPop = data.map(item => item.population).reduce((acc, item) =>{
+  if(item.population !=='China'){
+    acc += item
+  }
+  return acc
+} , 0)
+
+console.log(somaPop)
