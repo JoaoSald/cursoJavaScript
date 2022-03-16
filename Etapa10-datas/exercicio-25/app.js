@@ -20,45 +20,60 @@ const months = [
   'Dezembro'
 ]
 
+// months.forEach((valor, index) =>{
+//   if(valor == 'Fevereiro'){
+//     console.log(index)
+//   }
+// }) 
+console.log(months.indexOf('Fevereiro'))
+
 /*
   02
 
   - Crie um objeto de data que represente o momento presente;
   - Exiba o objeto no console.
 */
+const present = new Date()
+console.log(present)
 
 /*
   03
 
   - Baseado no objeto que você acabou de criar, exiba o ano atual no console.
 */
-
+console.log(present.getFullYear())
 /*
   04
 
   - Crie um objeto de data que represente um momento passado;
   - Exiba o objeto no console.
 */
-
+const past = new Date('May 1 2021 8:45:00')
+console.log(past)
 /*
   05
 
   - Exiba, no console, a hora do objeto que você acabou de criar.
 */
-
+console.log(past.getHours())
 /*
   06
 
   - Crie um objeto de data que represente um momento futuro;
   - Exiba o objeto no console.
 */
+const future = new Date('June 7 2022 10:50:00')
+console.log(future)
 
 /*
   07
 
   - Exiba no console a quantidade de dias entre o momento futuro e o passado.
 */
-
+const diference = future.getTime() - past.getTime()
+console.log(diference)
+const days = Math.round(diference/86400000)
+console.log(days)
 /*
   08
   
