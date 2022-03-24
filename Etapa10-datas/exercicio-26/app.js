@@ -5,6 +5,9 @@
     formatação "DD/MM/AAAA". Exemplo: 03/07/2021;
   - Não utilize a date-fns.
 */
+const hoje = new Date()
+console.log(`${hoje.getDay()}/${hoje.getMonth()+1}/${hoje.getFullYear()}`)
+
 
 /*
   02
@@ -13,6 +16,8 @@
     data na formatação: "03:07 - domingo, 7 de junho de 2020";
   - Não utilize a date-fns.
 */
+const minhaData = new Date('April 7 2021 17:00:00')
+console.log(`${minhaData.getHours()}:${minhaData.getMinutes()}`)
 
 /*
   03
