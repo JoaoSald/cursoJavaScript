@@ -5,8 +5,17 @@
     formatação "DD/MM/AAAA". Exemplo: 03/07/2021;
   - Não utilize a date-fns.
 */
-const hoje = new Date()
-console.log(`${hoje.getDay()}/${hoje.getMonth()+1}/${hoje.getFullYear()}`)
+const present = new Date()
+
+const formatDate = date => {
+  const day = date.getDate()
+  const month = date.getMonth() + 1
+  const year = date.getFullYear()
+  return `${String(day).length === 1 ? `0${day}`: day}/${String(month).length === 1 ? `0${month}`: month}/${year}`
+}
+
+console.log(formatDate(present))
+
 
 
 /*
@@ -16,8 +25,20 @@ console.log(`${hoje.getDay()}/${hoje.getMonth()+1}/${hoje.getFullYear()}`)
     data na formatação: "03:07 - domingo, 7 de junho de 2020";
   - Não utilize a date-fns.
 */
-const minhaData = new Date('April 7 2021 17:00:00')
-console.log(`${minhaData.getHours()}:${minhaData.getMinutes()}`)
+const formatDateHorario = date =>{
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  const arrayDias = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sabado"]
+  const arrayMes = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+  const days = date.getDay() 
+  const dia = date.getDate()
+  const month = date.getMonth()
+  const year = date.getFullYear()
+
+  return `${String(hours).length ===1 ? `0${hours}` : hours}:${String(minutes).length === 1 ? `0${minutes}` : minutes} - ${arrayDias[days]}, ${dia} de ${arrayMes[month]} de ${year}`
+}
+
+console.log(formatDateHorario(present))
 
 /*
   03
@@ -28,6 +49,8 @@ console.log(`${minhaData.getHours()}:${minhaData.getMinutes()}`)
 */
 
 const user = { id: 42, isVerified: true }
+const { id, isVerified } = user 
+console.log(id , isVerified)
 
 /*
   04
@@ -42,6 +65,10 @@ const user = { id: 42, isVerified: true }
 const robotA = { name: 'Bender' }
 const robotB = { name: 'HAL 9000' }
 
+const { name: nameA } = robotA
+const { name: nameB } = robotB
+console.log(nameA, nameB)
+
 /*
   05
 
@@ -54,6 +81,8 @@ const robotB = { name: 'HAL 9000' }
 const a = 'a'
 const b = 'b'
 const c = 'c'
+const alfabeto = {a, b, c}
+console.log(alfabeto)
 
 /*
   06
