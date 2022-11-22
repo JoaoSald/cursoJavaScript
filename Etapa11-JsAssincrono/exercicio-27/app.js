@@ -15,6 +15,7 @@ console.log('Linha 5')
 console.log('Linha 6')
 console.log('Linha 7')
 console.log('Linha 8')
+console.log('Linha 9')
 
 /*
   02
