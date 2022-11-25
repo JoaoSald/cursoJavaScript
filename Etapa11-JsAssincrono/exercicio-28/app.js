@@ -1,6 +1,5 @@
 /*
   01
-
   - Crie um objeto de request;
   - Abra este website https://pokeapi.co/;
   - Baseado no exemplo de endpoint exibido no website, abra uma requisição do 
@@ -18,7 +17,6 @@
 
 /*
   02
-
   - Crie um objeto que contém suas informações pessoais;
   - As propriedades devem armazenar: 
     - Seu nome;
@@ -30,19 +28,43 @@
     - Se você está andando (boolean iniciado em false);
     - Quantos metros você caminhou (number iniciado em 0).
 */
-
+    // let myObj = {
+    //     nome: 'João',
+    //     Sobrenome: 'Saldanha',
+    //     sexo: 'M',
+    //     idade: 21,
+    //     altura:166,
+    //     peso:64,
+    //     andando: false,
+    //     distancia: 0
+    // }
 /*
   03
-
   - Logo abaixo, adicione ao objeto um método que adiciona 1 ao valor da 
     propriedade que armazena a idade;
   - A cada vez que o método é invocado, 1 deve ser somado à idade atual;
   - Após criar o método, adicione 5 anos à idade do objeto.
 */
+// let myObj = {
+//     nome: 'João',
+//     Sobrenome: 'Saldanha',
+//     sexo: 'M',
+//     idade: 5,
+//     altura:166,
+//     peso:64,
+//     andando: false,
+//     distancia: 0,
+//     addMaisUM: function(){
+//         myObj.idade += 1
+//         console.log(this.idade)
+//     }
+// }
+
+// myObj.addMaisUM()
+
 
 /*
   04
-
   - Logo abaixo, adicione ao objeto um método que soma a quantidade de metros 
     caminhados ao valor que foi recebido como parâmetro do método;
   - Este método também deve modificar o boolean do objeto que indica se a 
@@ -50,10 +72,37 @@
   - Após criar o método, faça a pessoa caminhar alguns metros, invocando o 
     método 4x, com diferentes metragens passadas por parâmetro.
 */
+// let myObj =     
+// {
+//     nome: 'João',
+//     Sobrenome: 'Saldanha',
+//     sexo: 'M',
+//     idade: 5,
+//     altura:166,
+//     peso:64,
+//     andando: false,
+//     distancia: 0,
+//     addMaisUM: function()
+//         {
+//         myObj.idade += 1
+//         console.log(this.idade)
+//         },
+//     somaDistancia: function(qtdDistancia){
+//         myObj.distancia += qtdDistancia
+//         if( myObj.distancia !== 0){
+//             myObj.andando = true
+//         }
+//         console.log(`Você andou ${this.distancia} metros`)
+//     }
+// }
+// myObj.addMaisUM()
+// myObj.somaDistancia(4)
+// myObj.somaDistancia(6)
+// myObj.somaDistancia(8)
+// myObj.somaDistancia(10)
 
 /*
   05
-
   - Logo abaixo, adicione ao objeto um método que retorna a seguinte string:
   
   'Oi. Eu sou o NOME_COMPLETO, tenho IDADE anos, ALTURA metros de altura, 
@@ -67,10 +116,48 @@
     - Se a quantidade de metros caminhados for 1, substitua "metros" por 
       "metro", no singular.
 */
+let myObj =     
+{
+    nome: 'João',
+    Sobrenome: 'Saldanha',
+    sexo: 'M',
+    idade: 5,
+    altura:1.66,
+    peso:64,
+    andando: false,
+    distancia: 0,
+    addMaisUM: function()
+        {
+        myObj.idade += 1
+        console.log(this.idade)
+        },
+    somaDistancia: function(qtdDistancia){
+        myObj.distancia += qtdDistancia
+        if( myObj.distancia !== 0){
+            myObj.andando = true
+        }
+        console.log(`Você andou ${this.distancia} metros`)
+    },
+    info: function(){
+        const verificaSexo = myObj.sexo === 'M' ? 'o' : 'a'
+        const verificaIdade = myObj.idade === 1 ? 'ano' : 'anos'
+        const verificaMetros = myObj.distancia > 1 ? 'metros' : 'metro'
+        console.log(`Oi. Eu sou ${verificaSexo} ${this.nome} ${this.Sobrenome}, tenho ${this.idade} ${verificaIdade}, ${this.altura} metros de altura, peso ${this.peso} quilos e, só hoje, eu já caminhei ${this.distancia} ${verificaMetros}`)
+    }
+}
+
+// myObj.addMaisUM()
+
+myObj.somaDistancia(1)
+// myObj.somaDistancia(6)
+// myObj.somaDistancia(8)
+// myObj.somaDistancia(10)
+
+
+myObj.info()
 
 /*
   06
-
   - Crie uma função que recebe um valor como argumento e retorna um boolean 
     indicando se o valor é truthy ou falsy;
   - Invoque a função e, a cada invocação, passe como argumento um valor falsy.
@@ -82,7 +169,6 @@
 
 /*
   07
-
   - Crie uma função que recebe um parâmetro, que será o nome de um livro;
   - Essa função deve conter um objeto com 3 propriedades, que são nomes de 
     livros;
@@ -95,6 +181,5 @@
     parâmetro;
   - Se o parâmetro não for passado, faça a função retornar o objeto com todos 
     os livros.
-
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
