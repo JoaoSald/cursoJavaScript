@@ -14,6 +14,19 @@
     obter os dados do pokémon';
   - Teste também a verificação do item acima.
 */
+const request = new HMLHttpRequest() //esse obj pra fazer requisição de dados trabalho com qualquer tipo de dados
+
+    request.addEventListenner('readystatechange', ()=>{
+
+      if(request.readyState === 4 && request.status === 200){
+        console.log(request.response)
+      }
+
+    })
+
+      request.open('GET', 'https://pokeapi.co/')
+
+      request.send() 
 
 /*
   02
@@ -131,14 +144,16 @@ let myObj =
         myObj.idade += 1
         console.log(this.idade)
         },
-    somaDistancia: function(qtdDistancia){
+    somaDistancia: function(qtdDistancia)
+    {
         myObj.distancia += qtdDistancia
         if( myObj.distancia !== 0){
             myObj.andando = true
         }
         console.log(`Você andou ${this.distancia} metros`)
     },
-    info: function(){
+    info: function()
+    {
         const verificaSexo = myObj.sexo === 'M' ? 'o' : 'a'
         const verificaIdade = myObj.idade === 1 ? 'ano' : 'anos'
         const verificaMetros = myObj.distancia > 1 ? 'metros' : 'metro'
@@ -146,12 +161,10 @@ let myObj =
     }
 }
 
-// myObj.addMaisUM()
+myObj.addMaisUM()
+
 
 myObj.somaDistancia(1)
-// myObj.somaDistancia(6)
-// myObj.somaDistancia(8)
-// myObj.somaDistancia(10)
 
 
 myObj.info()
@@ -166,6 +179,13 @@ myObj.info()
     valor truthy;
     - Faça isso até que 7 valores truthy sejam passados.
 */
+
+const recebeValor = (a)=>{
+      if(a){
+       console.log(a)
+}}
+
+recebeValor(1)
 
 /*
   07
@@ -183,3 +203,34 @@ myObj.info()
     os livros.
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
+
+let funcLivros = (l1,l2,l3)=>
+
+      {
+        let myObject = 
+        { 
+         livro1:  {titulo1:'Livro do Ze', paginas: 100, autor:'Zé', editora:'editoraze'},
+         livro2:  {titulo2:'Livro do Joao',paginas: 200, autor:'João', editora:'editorajoao'},
+         livro3:  {titulo3:'Livro da Maria',paginas: 300, autor:'Maria', editora:'editoramaria'}
+        }
+
+            if(l1 === myObject.livro1.titulo1)
+            {
+                 console.log(myObject.livro1)
+              if(l2 === myObject.livro2.titulo2)
+              {
+                  console.log(myObject.livro2)
+              }
+              if(l3 === myObject.livro3.titulo3)
+              {
+                   console.log(myObject.livro3)
+              }
+            } else {
+                    console.log(myObject)
+                    }
+      
+      }
+
+
+funcLivros('Livro do Ze')
+funcLivros()
