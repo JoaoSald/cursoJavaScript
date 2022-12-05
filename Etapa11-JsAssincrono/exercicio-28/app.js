@@ -14,19 +14,24 @@
     obter os dados do pokémon';
   - Teste também a verificação do item acima.
 */
-const request = new HMLHttpRequest() //esse obj pra fazer requisição de dados trabalho com qualquer tipo de dados
+// const request = new XMLHttpRequest() //esse obj pra fazer requisição de dados trabalho com qualquer tipo de dados
 
-    request.addEventListenner('readystatechange', ()=>{
+//     request.addEventListenner('readystatechange', () =>{
 
-      if(request.readyState === 4 && request.status === 200){
-        console.log(request.response)
-      }
+//       if(request.readyState === 4 && request.status === 200){
+//         console.log(request.responseText)
+//         return
+//       }
+      
+//       if(request.readyState === 4 ){
+//         console.log('Não foi possível obter os dados do pokemon')
+//       }
 
-    })
+//     })
 
-      request.open('GET', 'https://pokeapi.co/')
+//       request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachuh')
 
-      request.send() 
+//       request.send() 
 
 /*
   02
@@ -134,15 +139,17 @@ let myObj =
     nome: 'João',
     Sobrenome: 'Saldanha',
     sexo: 'M',
-    idade: 5,
+    idade: 21,
     altura:1.66,
     peso:64,
     andando: false,
     distancia: 0,
     addMaisUM: function()
         {
-        myObj.idade += 1
-        console.log(this.idade)
+          for(let i = 0; i < 5; i++){
+            myObj.idade += 1
+          }
+         console.log(this.idade)
         },
     somaDistancia: function(qtdDistancia)
     {
@@ -180,12 +187,18 @@ myObj.info()
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
-const recebeValor = (a)=>{
-      if(a){
-       console.log(a)
-}}
+const isTruthy = value => Boolean(value)
 
-recebeValor(1)
+const falsyValues = [false, 0, '', null, undefined, NaN]
+const truthyValues = [true, '0', ()=>{}, {}, [], -1, 'false']
+
+falsyValues.forEach(falsyValue => {
+  console.log(isTruthy(falsyValue))
+})
+
+truthyValues.forEach(truthyValue =>{
+  console.log(isTruthy(truthyValue))
+})
 
 /*
   07
@@ -203,15 +216,27 @@ recebeValor(1)
     os livros.
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
-
-let funcLivros = (l1,l2,l3)=>
+const funcLivros = (l1,l2,l3)=>
 
       {
         let myObject = 
         { 
-         livro1:  {titulo1:'Livro do Ze', paginas: 100, autor:'Zé', editora:'editoraze'},
-         livro2:  {titulo2:'Livro do Joao',paginas: 200, autor:'João', editora:'editorajoao'},
-         livro3:  {titulo3:'Livro da Maria',paginas: 300, autor:'Maria', editora:'editoramaria'}
+         livro1:  {
+          titulo1:'Livro do Ze', 
+          paginas: 100, autor:'Zé', 
+          editora:'editoraze'
+        },
+         livro2:  {
+          titulo2:'Livro do Joao',
+          paginas: 200, autor:'João',
+          editora:'editorajoao'
+        },
+         livro3:  {
+        titulo3:'Livro da Maria',
+         paginas: 300, 
+         autor:'Maria', 
+         editora:'editoramaria'
+        }
         }
 
             if(l1 === myObject.livro1.titulo1)
