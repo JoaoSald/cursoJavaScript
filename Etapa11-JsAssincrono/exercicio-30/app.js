@@ -60,7 +60,7 @@ const sum = calculator('+')
 const subtraction = calculator('-')
 const multiplication = calculator('*')
 const division= calculator('/')
-const module = calculator('%')
+const remainder = calculator('%')
 console.log(sum(1,1))
 
 /*
@@ -138,7 +138,6 @@ console.log(message)
 
 /*
   05
-
   - Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
     resultado à uma constante. Se esse estado existir no array, mostre no 
     console "Ceará está incluído.". Se não, mostre "Ceará não foi incluído =/";
@@ -149,3 +148,15 @@ console.log(message)
   - Filtre o array criado acima, retornando somente os estados que tiverem ID 
     par. Atribua este novo array à uma constante.
 */
+const isCearaInclued = brasil.includes('Ceará')
+const cearaMessege = isCearaInclued ? "Ceará está incluído." : "Ceará não foi incluído =/"
+
+console.log(cearaMessege)
+
+const newNewBrasil = newBrasil.map(({id, estado})=> ({
+  id: id+1,
+  estado: `${estado} pertence ao Brasil.`}))
+
+console.log(newNewBrasil)
+
+const filteredNewNewBrasul = newNewBrasil.filter(({id}) => id % 2 === 0)
