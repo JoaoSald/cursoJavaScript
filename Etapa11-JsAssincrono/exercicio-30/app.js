@@ -159,4 +159,4 @@ const newNewBrasil = newBrasil.map(({id, estado})=> ({
 
 console.log(newNewBrasil)
 
-const filteredNewNewBrasul = newNewBrasil.filter(({id}) => id % 2 === 0)
+const filteredNewNewBrasil = newNewBrasil.filter(({id}) => id % 2 === 0)
