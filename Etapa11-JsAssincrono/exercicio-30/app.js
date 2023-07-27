@@ -7,6 +7,29 @@
   - Se o request não estiver ok, exiba no console "Não foi possível obter os 
     dados dos usuários."
 */
+const getUsers = url => new Promise((resolve, reject ) =>{
+    const request = new XMLHttpRequest()
+
+    request.addEventListener('readystatechange', ()=>{
+        const isRequestOk = request.readyState === 4 && request.status === 200 
+        const isRequestNotOk = request.readyState === 4 
+
+        if(isRequestOk){
+            const data = JSON.parse(request.responseText)
+            resolve(data)
+        }
+        if(isRequestNotOk){
+            reject("Não foi possível obter os dados dos usuários.")
+        }
+    })
+    request.open('GET', url)
+    request.send()
+
+})
+getUsers('https://jsonplaceholder.typicode.com/users')
+.then(console.log)
+.catch(console.log)
+
 
 /*
   02
@@ -21,6 +44,24 @@
     mensagem: "Resultado da operação: NUMERO_1 OPERADOR NUMERO_2 = RESULTADO."
   - Se o operador não for válido, retorne a mensagem "Operação inválida."
 */
+const getOperationMessage = (num1, operator, num2, operation) =>
+    `Resultado da operação ${num1} ${operator} ${num2} = ${operation}. `
+
+const calculator = operator => (num1, num2) => ({
+// QUANDO CALCULATOR FOR INVOCADA VAI RECEBER UM OPERADOR POR PARÂMETRO E VAI RETORNAR A FUNÇÃO SEGUINTE QUE RECEBE NUM1 E NUM2 POR PARÂMETRO 
+     '+': getOperationMessage(num1, operator, num2, num1+num2) ,
+     '-':getOperationMessage(num1, operator, num2, num1-num2) ,
+     '*': getOperationMessage(num1, operator, num2, num1*num2),
+     '/': getOperationMessage(num1, operator, num2, num1/num2),
+     '%':getOperationMessage(num1, operator, num2, num1%num2) 
+    })[operator] || 'Operação inválida.'
+
+const sum = calculator('+')
+const subtraction = calculator('-')
+const multiplication = calculator('*')
+const division= calculator('/')
+const module = calculator('%')
+console.log(sum(1,1))
 
 /*
   03
@@ -35,6 +76,25 @@
   - Crie um novo array chamado `newSul`, que recebe somente os estados do sul,
     pegando do array `brasil`. Não remova esses itens de `brasil`.
 */
+const sul = [
+    "Santa Catarina",
+    "Paraná",
+     "Rio Grande do Sul"
+]
+
+const sudeste =[
+    'Minas Gerais',
+    'Espirito Santo',
+    'Rio de Janeiro',
+    'São Paulo'
+]
+let brasil =sul.concat(sudeste) // concat nao modifica os arrays originais 
+brasil.unshift('Amazonas', 'Acre', 'Rondôia') // adiciona 3 itens no array
+console.log(brasil.shift()) // remove o primeiro item de array
+console.log(brasil)
+
+const newSul = brasil.slice(2, 5)
+console.log(newSul)
 
 /*
   04
@@ -54,6 +114,27 @@
     console: "Nem todos os estados tem mais de 7 letras.". Pesquise pelo método 
     every.
 */
+const nordeste = [
+    'Maranhão',
+    'Piauí',
+    'Rio Grande do Norte',
+    'Ceará',
+    'Paraíba',
+    'Bahia',
+    'Pernambuco',
+    'Alagoas',
+    'Sergipe'
+]
+
+const newSudeste = brasil.splice(5, 4)
+brasil = brasil.concat(nordeste)
+
+const newBrasil = brasil.map((item, index) => ({id: index, estado: item}))
+console.log(newBrasil)
+
+const hasmoreThan7Letters = brasil.every(item => item.length > 7)
+const message = hasmoreThan7Letters ? "Sim, todos os estados tem mais de 7 letras." : "Nem todos os estados tem mais de 7 letras."
+console.log(message)
 
 /*
   05
