@@ -1,18 +1,22 @@
-const APIKey = 'C9EyqsVd7kd1WW0mWAd8XAqAM83bpOyw'
-const getCityUrl = cityName => 
+const APIKey = 'C9EyqsVd7kd1WW0mWAd8XAqAM83bpOyw' // armazena chave da API
+const getCityUrl = cityName => // getcityurl é uma função que recebe os parametros de forma dinâmica e retrona a url 
+//contendo os valores que o parametro recebeu
 `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${APIKey}&q=${cityName}`
+// vamos passar as informações atraves dos query parameters na url
+// os parametros passados serao a chave da API e a cidade que queremos pesquisar 
 
 const getCityData = async (cityName) =>{
     try {
-      const cityUrl = getCityUrl(cityName)
-      const response = await fetch(cityUrl)
+      const cityUrl = getCityUrl(cityName) // recebe o retorna da invocação getCityUrl
+      const response = await fetch(cityUrl) // requisição na API atraves do fetch
 
       if(!response.ok){
         throw new Error('Não foi possivel obter dados')
-      }
+      } // verifica se deu tudo certo na requisição
 
-      const [cityData] = await response.json()
-     return cityData
+      const [cityData] = await response.json() // armazena primeiro obj do array 
+      return cityData
+    // console.log(cityData)
     }catch ({name, message}){
         alert(`${name}: ${message}`)
     }
