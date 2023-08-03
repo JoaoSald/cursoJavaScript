@@ -1,3 +1,5 @@
+//----------------------CONSTANTES GLOBAIS-------------------------------------------------------------------//
+
 const APIKey = 'C9EyqsVd7kd1WW0mWAd8XAqAM83bpOyw' // armazena chave da API
 const getCityUrl = cityName => // getcityurl é uma função que recebe os parametros de forma dinâmica e retrona a url 
 //contendo os valores que o parametro recebeu
@@ -5,6 +7,7 @@ const getCityUrl = cityName => // getcityurl é uma função que recebe os param
 // vamos passar as informações atraves dos query parameters na url
 // os parametros passados serao a chave da API e a cidade que queremos pesquisar 
 
+//---------------------------------FUNÇÕES--------------------------------------------------------------//
 const getCityData = async (cityName) =>{
     try {
       const cityUrl = getCityUrl(cityName) // recebe o retorna da invocação getCityUrl
