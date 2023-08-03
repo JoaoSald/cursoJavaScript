@@ -22,4 +22,22 @@ const getCityData = async (cityName) =>{
     }
 }
 
-getCityData("São Paulo")
+const getCityWeather = async cityName => {
+  try {
+    const { Key } = await getCityData(cityName) // armazrena chave da cidade 
+    const cityWeatherUrl = `http://dataservice.accuweather.com/currentconditions/v1/${Key}?apikey=${APIKey}` 
+    const response = await fetch(cityWeatherUrl) 
+
+    if(!response.ok){
+      throw new Error('Não foi possivel obter dados')
+    } // verifica se deu tudo certo na requisição
+
+    const [cityWeatherData] = await response.json() 
+   // debugger
+    return cityWeatherData
+  }catch ({name, message}){
+      alert(`${name}: ${message}`)
+  }
+}
+
+getCityWeather("São Paulo")
