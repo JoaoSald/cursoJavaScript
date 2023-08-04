@@ -5,7 +5,7 @@
   - Solucione esse problema sem declarar uma constante "book".
 */
 
-// console.log(book)
+console.log(book) // mudar a ordem dos scripts no html
 
 /*
   02
@@ -16,6 +16,8 @@
     - O 2º item é o 1º item do array recebido por argumento;
   - Implemente a função da forma mais concisa que você conseguir.
 */
+const swap = ([first, , third]) => [third,first]
+console.log(swap([953, 299, 384]))
 
 /*
   03
@@ -25,56 +27,99 @@
 */
 
 const topics = [
-  { id: 1, name: 'Artes & cultura'},
-  { id: 2, name: 'Negócios & finanças'},
-  { id: 3, name: 'Carreiras'}
-]
+    { id: 1, name: 'Artes & cultura'},
+    { id: 2, name: 'Negócios & finanças'},
+    { id: 3, name: 'Carreiras'}
+  ]
+  
+  const [, , {name}] = topics
 
-/*
-  04
+  console.log(name)
 
-  - O 2º item do array abaixo contém as cores RGB;
-  - Em uma declaração, faça o destructuring dos valores desse item em 3 consts: 
-    'red', 'green' e 'blue'.
-*/
+  /*
+    04
+  
+    - O 2º item do array abaixo contém as cores RGB;
+    - Em uma declaração, faça o destructuring dos valores desse item em 3 consts: 
+      'red', 'green' e 'blue'.
+  */
+  
+  const colors = ['#FF00FF', ['#FF0D0D', '#0AFA00', '#011EFA'], '#7BF0FF']
+   const [, [red, green, blue], ] = colors
+   console.log(red,green,blue)
 
-const colors = ['#FF00FF', ['#FF0D0D', '#0AFA00', '#011EFA'], '#7BF0FF']
+  /*
+    05
+  
+    - Descomente o código abaixo e implemente a função greet;
+    - Observe que ela recebe 2 argumentos, um objeto e uma string;
+    - Dentro da declaração da função:
+      - Faça um destructuring no objeto recebido no 1º argumento;
+      - No destructuring, nomeie de forma dinâmica a const que você está 
+        declarando, usando o 2º argumento que a invocação da função recebeu.
+        Você já conhece a sintaxe que nomeia de forma dinâmica;
+      - Atribua "desconhecido" como valor default da const do destructuring;
+      - Faça a função retornar "Olá, meu nome é [NOME]!".
+  */
+  const greet = (obj, dynamicName) => {
+  const { [dynamicName]: name = 'desconhecido'} = obj 
+    return  `Olá, meu nome é ${name}!`
+  }
+  
+   console.log(greet({ name: 'Roger' }, 'name'))
+   console.log(greet({}, 'personName'))
+  
+  /*
+    06
+  
+    - O idioma da interface gráfica da aplicação que estamos construindo 
+      (Weather App) é pt-BR;
+    - Ao invocarmos a getCityWeather, observe que a propriedade "WeatherText" do 
+      objeto obtido armazena a descrição do clima em inglês: "cloudy", "rain", 
+      etc;
+    - Traduza os possíveis valores dessa propriedade;
+    - Não é necessário implementar condicionais, objetos, ou arrays para fazer
+      isso.
+  */
+const cityWeatherUrl = `http://dataservice.accuweather.com/currentconditions/v1/${Key}?apikey=${APIKey}&language=pt-br` 
+  /*
+    07
+  
+    - Refatore o weather.js;
+    - Uma dica do que pode ser melhorado:
+      - A repetição dos requests pode ser eliminada por uma função genérica e 
+        reutilizável, responsável apenas por fazer requests.
+  */
+const APIKey = 'C9EyqsVd7kd1WW0mWAd8XAqAM83bpOyw' 
+const baseUrl = 'http://dataservice.accuweather.com/'
 
-/*
-  05
+const getCityUrl = cityName =>
+`${baseUrl}/locations/v1/cities/search?apikey=${APIKey}&q=${cityName}`
 
-  - Descomente o código abaixo e implemente a função greet;
-  - Observe que ela recebe 2 argumentos, um objeto e uma string;
-  - Dentro da declaração da função:
-    - Faça um destructuring no objeto recebido no 1º argumento;
-    - No destructuring, nomeie de forma dinâmica a const que você está 
-      declarando, usando o 2º argumento que a invocação da função recebeu.
-      Você já conhece a sintaxe que nomeia de forma dinâmica;
-    - Atribua "desconhecido" como valor default da const do destructuring;
-    - Faça a função retornar "Olá, meu nome é [NOME]!".
-*/
+const getWeatherUrl = ({key}) => 
+    `${baseUrl}/currentconditions/v1/${key}?apikey=${APIKey}&language=pt-br`
 
-// console.log(greet({ name: 'Roger' }, 'name'))
-// console.log(greet({}, 'personName'))
+const fetchData = async url =>{
+    try {
+ 
+      const response = await fetch(url) 
 
-/*
-  06
+      if(!response.ok){
+        throw new Error('Não foi possivel obter dados')
+      } 
 
-  - O idioma da interface gráfica da aplicação que estamos construindo 
-    (Weather App) é pt-BR;
-  - Ao invocarmos a getCityWeather, observe que a propriedade "WeatherText" do 
-    objeto obtido armazena a descrição do clima em inglês: "cloudy", "rain", 
-    etc;
-  - Traduza os possíveis valores dessa propriedade;
-  - Não é necessário implementar condicionais, objetos, ou arrays para fazer
-    isso.
-*/
+      return response.json() 
+    }catch ({name, message}){
+        alert(`${name}: ${message}`)
+    }
+}
 
-/*
-  07
+const getCityData = cityName => fetchData(getCityUrl(cityName))
 
-  - Refatore o weather.js;
-  - Uma dica do que pode ser melhorado:
-    - A repetição dos requests pode ser eliminada por uma função genérica e 
-      reutilizável, responsável apenas por fazer requests.
-*/
+const getCityWeather = async cityName => {
+    const [cityData] = await getCityData(cityName)
+    return fetchData(getCityWeather(cityData)) 
+}
+
+getCityWeather('São Paulo')
+    .then(console.log)
