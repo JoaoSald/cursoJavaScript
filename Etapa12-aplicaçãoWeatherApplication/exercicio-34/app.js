@@ -11,23 +11,36 @@
   - Após implementar a função, implemente outra versão da função. Essa 2ª 
     versão deve fazer o mesmo que a função anterior faz, mas de forma diferente.
 */
-console.log('teste')
-/*
+const getReversedString = string => string
+  .split('')
+  .reverse()
+  .join()
+
+console.log(getReversedString('123'))
+
+const reversedString = string => string
+  .split('')
+  .reduce((acc, letter) => letter + acc, '')
+
+console.log(reversedString('abc'))
+
+  /*
   02
   
   - Descubra o que o código abaixo está fazendo e refatore-o.
 */
 
 const numbers = [5, 20, 7, 32, 47, 15, 83, 91, 27, 33]
-let foundNumber = false
+const achandoNumero = numbers.includes(15)
+// let foundNumber = false
 
-numbers.forEach(number => {
-  if (number === 15) {
-    foundNumber = true
-  }
-})
+// numbers.forEach(number => {
+//   if (number === 15) {
+//     foundNumber = true
+//   }
+// })
 
-console.log(foundNumber)
+console.log(achandoNumero)
 
 /*
   03
