@@ -39,7 +39,11 @@ console.log(sum(...numbers))
   - Utilizando (também) o spread operator, exiba no console o seu nome com 
     apenas a primeira letra maiúscula.
 */
+const myname = 'joao'
 
+const imprimeNome = (meunome) => meunome.toUpperCase()
+
+console.log(imprimeNome(...myname))
 /*
   03
 
