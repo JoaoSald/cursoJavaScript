@@ -10,9 +10,26 @@
 
 const numbers = [50, 100, 50]
 
-const sum = (x, y, z) => x + y + z
+let sum = (x, y, z) => x + y + z
 
-console.log(sum(numbers))
+console.log(sum(...numbers))
+
+// Certamente! O operador ... em JavaScript é chamado de "operador de propagação"(spread operator) 
+// ou "operador de espalhamento".Ele é usado em diferentes contextos, e um deles é para desestruturar arrays.
+
+// No contexto do seu código, ao usar ...numbers na chamada da função sum, você está 
+// espalhando os elementos do array numbers como argumentos individuais para a função.Em 
+// outras palavras, ele "desempacota" os valores do array e os fornece como argumentos separados para a função.
+
+// Aqui está um exemplo mais simples para ilustrar o conceito:
+
+//const numbers = [2, 4, 6];
+
+// Sem operador de propagação
+//console.log(sum(numbers)); // Saída: 2,4,6undefinedundefined
+
+// Com operador de propagação
+//console.log(sum(...numbers)); // Saída: 12
 
 /*
   02
