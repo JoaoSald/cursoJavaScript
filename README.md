@@ -1,4 +1,4 @@
-**Repositório do Curso de JavaScript - Conteúdo do CJRM**
+# Repositório do Curso de JavaScript - Conteúdo do CJRM
 
 **Fundamentos do JavaScript**
 - Configuração do ambiente.
